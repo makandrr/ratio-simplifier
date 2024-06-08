@@ -28,7 +28,9 @@ function Inputs() {
           id="width"
           value={width}
           onInput={e =>
-            dispatch(setWidth(Number((e.target as HTMLInputElement).value)))
+            dispatch(
+              setWidth(Number((e.target as HTMLInputElement).value ?? 1))
+            )
           }
         />
       </div>
@@ -42,7 +44,9 @@ function Inputs() {
           id="height"
           value={height}
           onInput={e =>
-            dispatch(setHeight(Number((e.target as HTMLInputElement).value)))
+            dispatch(
+              setHeight(Number((e.target as HTMLInputElement).value ?? 1))
+            )
           }
         />
       </div>
@@ -57,7 +61,7 @@ function Inputs() {
           id="percentage"
           value={loss}
           onInput={e =>
-            dispatch(setLoss(Number((e.target as HTMLInputElement).value)))
+            dispatch(setLoss(Number((e.target as HTMLInputElement).value ?? 0)))
           }
         />
       </div>

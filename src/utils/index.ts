@@ -1,7 +1,10 @@
-export function simplifyRatioWithLoss(width: number, height: number, loss: number): [number, number] {
+export function simplifyRatioWithLoss(width: number = 1, height: number = 1, loss: number = 0): [number, number] {
+  console.log(width, height, loss)
   if (loss < 0 || loss > 1) {
     throw new Error("Loss must be between 0 and 1");
   }
+  if (width <= 0) width++
+  if (height <= 0) height++
 
   function sternBrocotApproximations(n: number, d: number): [number, number][] {
     const approximations: [number, number][] = [];
