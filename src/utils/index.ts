@@ -1,36 +1,41 @@
-function gcd(a: number, b: number): number {
-  while (b !== 0) {
-    const temp = b;
-    b = a % b;
-    a = temp;
+export function simplifyRatioWithLoss(width: number, height: number, loss: number): [number, number] {
+  if (loss < 0 || loss > 1) {
+    throw new Error("Loss must be between 0 and 1");
   }
-  return a;
-}
 
-export function simplifyRatioWithLoss(
-  width: number,
-  height: number,
-  loss: number
-): [number, number] {
-  loss = Math.max(0, Math.min(1, loss));
+  function sternBrocotApproximations(n: number, d: number): [number, number][] {
+    const approximations: [number, number][] = [];
+    let left = [0, 1], right = [1, 0];
 
-  if (loss === 1) {
-    return [1, 1];
+    for (; ;) {
+      const mediant = [left[0] + right[0], left[1] + right[1]];
+      if (mediant[1] > d) break;
+
+      approximations.push([mediant[0], mediant[1]]);
+
+      if (n * mediant[1] > d * mediant[0]) {
+        left = mediant;
+      } else {
+        right = mediant;
+      }
+    }
+
+    return approximations;
+  }
+
+  function gcd(a: number, b: number): number {
+    if (!b) return a;
+    return gcd(b, a % b);
   }
 
   const divisor = gcd(width, height);
-  const simplifiedWidth = width / divisor;
-  const simplifiedHeight = height / divisor;
+  width = width / divisor;
+  height = height / divisor;
 
-  if (loss === 0) {
-    return [simplifiedWidth, simplifiedHeight];
-  }
+  const approximations = sternBrocotApproximations(width, height);
 
-  const widthLoss = simplifiedWidth * loss;
-  const heightLoss = simplifiedHeight * loss;
+  const index = Math.round((1 - loss) * (approximations.length - 1));
+  const [simplifiedWidth, simplifiedHeight] = approximations[index];
 
-  const newWidth = Math.round(simplifiedWidth - widthLoss);
-  const newHeight = Math.round(simplifiedHeight - heightLoss);
-
-  return [Math.max(1, newWidth), Math.max(1, newHeight)];
+  return [simplifiedWidth, simplifiedHeight];
 }
