@@ -64,7 +64,7 @@ Error generating stack: `+i.message+`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`;function Dv(){const e=P0(),t=ct(o=>o.ratio.width),n=ct(o=>o.ratio.height),r=ct(o=>o.ratio.loss);return L.jsxs(Lv,{children:[L.jsxs("div",{children:[L.jsx("label",{htmlFor:"width",children:"Width:"}),L.jsx(El,{type:"number",min:1,step:1,placeholder:"16",id:"width",value:t,onInput:o=>e(zv(Number(o.target.value)))})]}),L.jsxs("div",{children:[L.jsx("label",{htmlFor:"height",children:"Height:"}),L.jsx(El,{type:"number",min:1,step:1,placeholder:"9",id:"height",value:n,onInput:o=>e(Ov(Number(o.target.value)))})]}),L.jsxs("div",{children:[L.jsx("label",{htmlFor:"percentage",children:"Loss percentage:"}),L.jsx(El,{type:"number",min:0,max:100,step:1,placeholder:"20",id:"percentage",value:r,onInput:o=>e($v(Number(o.target.value)))})]})]})}function xp(e,t,n){if(n<0||n>1)throw new Error("Loss must be between 0 and 1");function r(d,h){const m=[];let v=[0,1],g=[1,0];for(;;){const w=[v[0]+g[0],v[1]+g[1]];if(w[1]>h)break;m.push([w[0],w[1]]),d*w[1]>h*w[0]?v=w:g=w}return m}function o(d,h){return h?o(h,d%h):d}const i=o(e,t);e=e/i,t=t/i;const l=r(e,t),u=Math.round((1-n)*(l.length-1)),[s,a]=l[u];return[s,a]}const jv=Ht.div`
+`;function Dv(){const e=P0(),t=ct(o=>o.ratio.width),n=ct(o=>o.ratio.height),r=ct(o=>o.ratio.loss);return L.jsxs(Lv,{children:[L.jsxs("div",{children:[L.jsx("label",{htmlFor:"width",children:"Width:"}),L.jsx(El,{type:"number",min:1,step:1,placeholder:"16",id:"width",value:t,onInput:o=>e(zv(Number(o.target.value??1)))})]}),L.jsxs("div",{children:[L.jsx("label",{htmlFor:"height",children:"Height:"}),L.jsx(El,{type:"number",min:1,step:1,placeholder:"9",id:"height",value:n,onInput:o=>e(Ov(Number(o.target.value??1)))})]}),L.jsxs("div",{children:[L.jsx("label",{htmlFor:"percentage",children:"Loss percentage:"}),L.jsx(El,{type:"number",min:0,max:100,step:1,placeholder:"20",id:"percentage",value:r,onInput:o=>e($v(Number(o.target.value??0)))})]})]})}function xp(e=1,t=1,n=0){if(console.log(e,t,n),n<0||n>1)throw new Error("Loss must be between 0 and 1");e<=0&&e++,t<=0&&t++;function r(d,h){const m=[];let v=[0,1],g=[1,0];for(;;){const w=[v[0]+g[0],v[1]+g[1]];if(w[1]>h)break;m.push([w[0],w[1]]),d*w[1]>h*w[0]?v=w:g=w}return m}function o(d,h){return h?o(h,d%h):d}const i=o(e,t);e=e/i,t=t/i;const l=r(e,t),u=Math.round((1-n)*(l.length-1)),[s,a]=l[u];return[s,a]}const jv=Ht.div`
   .label,
   .ratio {
     font-size: 2rem;
@@ -118,5 +118,7 @@ Error generating stack: `+i.message+`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    padding: 1rem;
   }
 `;function Wv(){return L.jsxs(Bv,{children:[L.jsxs("div",{className:"left",children:[L.jsx(Dv,{}),L.jsx(Mv,{})]}),L.jsx("div",{className:"rect-result",children:L.jsx(Uv,{})})]})}const Hv=av({reducer:{ratio:Iv}});Nl.createRoot(document.getElementById("root")).render(L.jsx(Dt.StrictMode,{children:L.jsx(E0,{store:Hv,children:L.jsx(Wv,{})})}));
