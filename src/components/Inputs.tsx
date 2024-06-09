@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState, AppDispatch} from '../store';
 import {setWidth, setHeight, setLoss} from '../store/ratioSlice';
+import {clamp} from 'lodash';
 
 const InputsStack = styled.div`
   display: flex;
@@ -60,9 +61,14 @@ function Inputs() {
           placeholder="20"
           id="percentage"
           value={loss}
-          onInput={e =>
-            dispatch(setLoss(Number((e.target as HTMLInputElement).value ?? 0)))
-          }
+          onInput={e => {
+            const loss = clamp(
+              Number((e.target as HTMLInputElement).value) ?? 0,
+              0,
+              100
+            );
+            dispatch(setLoss(loss));
+          }}
         />
       </div>
     </InputsStack>
