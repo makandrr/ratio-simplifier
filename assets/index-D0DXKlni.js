@@ -183,7 +183,6 @@ html, body, #root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
   --primary-color: #EC6B1F;
   --secondary-color: #99C2EC;
