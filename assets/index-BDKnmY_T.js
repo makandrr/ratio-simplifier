@@ -90,7 +90,7 @@ function print() { __p += __j.call(arguments, '') }
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`;function G4(){const e=zT(),n=nr(o=>o.ratio.width),t=nr(o=>o.ratio.height),u=nr(o=>o.ratio.loss);return de.jsxs(j4,{children:[de.jsxs("div",{children:[de.jsx("label",{htmlFor:"width",children:"Width:"}),de.jsx(vc,{type:"number",min:1,step:1,placeholder:"16",id:"width",value:n,onInput:o=>e(F4(Number(o.target.value??1)))})]}),de.jsxs("div",{children:[de.jsx("label",{htmlFor:"height",children:"Height:"}),de.jsx(vc,{type:"number",min:1,step:1,placeholder:"9",id:"height",value:t,onInput:o=>e(U4(Number(o.target.value??1)))})]}),de.jsxs("div",{children:[de.jsx("label",{htmlFor:"percentage",children:"Loss percentage:"}),de.jsx(vc,{type:"number",min:0,max:100,step:1,placeholder:"20",id:"percentage",value:u,onInput:o=>{const s=H4.clamp(Number(o.target.value)??0,0,100);e(W4(s))}})]})]})}function qy(e=1,n=1,t=0){if(console.log(e,n,t),t<0||t>1)throw new Error("Loss must be between 0 and 1");e<=0&&e++,n<=0&&n++;function u(w,E){const C=[];let P=[0,1],A=[1,0];for(;;){const O=[P[0]+A[0],P[1]+A[1]];if(O[1]>E)break;C.push([O[0],O[1]]),w*O[1]>E*O[0]?P=O:A=O}return C}function o(w,E){return E?o(E,w%E):w}const s=o(e,n);e=e/s,n=n/s;const a=u(e,n),c=Math.round((1-t)*(a.length-1)),[p,v]=a[c];return[p,v]}const K4=Br.div`
+`;function G4(){const e=zT(),n=nr(o=>o.ratio.width),t=nr(o=>o.ratio.height),u=nr(o=>o.ratio.loss);return de.jsxs(j4,{children:[de.jsxs("div",{children:[de.jsx("label",{htmlFor:"width",children:"Width:"}),de.jsx(vc,{type:"number",min:1,step:1,placeholder:"16",id:"width",value:n,onInput:o=>e(F4(Number(o.target.value??1)))})]}),de.jsxs("div",{children:[de.jsx("label",{htmlFor:"height",children:"Height:"}),de.jsx(vc,{type:"number",min:1,step:1,placeholder:"9",id:"height",value:t,onInput:o=>e(U4(Number(o.target.value??1)))})]}),de.jsxs("div",{children:[de.jsx("label",{htmlFor:"percentage",children:"Loss percentage:"}),de.jsx(vc,{type:"number",min:0,max:100,step:1,placeholder:"20",id:"percentage",value:u,onInput:o=>{const s=H4.clamp(Number(o.target.value)??0,0,100);e(W4(s))}})]})]})}function qy([e=1,n=1],t=0){if(t<0||t>1)throw new Error("Loss must be between 0 and 1");e<=0&&e++,n<=0&&n++;function u(w,E){const C=[];let P=[0,1],A=[1,0];for(;;){const O=[P[0]+A[0],P[1]+A[1]];if(O[1]>E)break;C.push([O[0],O[1]]),w*O[1]>E*O[0]?P=O:A=O}return C}function o(w,E){return E?o(E,w%E):w}const s=o(e,n);e=e/s,n=n/s;const a=u(e,n),c=Math.round((1-t)*(a.length-1)),[p,v]=a[c];return[p,v]}const K4=Br.div`
   .label,
   .ratio {
     font-size: 2rem;
@@ -113,7 +113,7 @@ function print() { __p += __j.call(arguments, '') }
       color: #708c98;
     }
   }
-`;function Q4(){const e=nr(o=>o.ratio.width),n=nr(o=>o.ratio.height),t=nr(o=>o.ratio.loss),u=qy(e,n,t/100);return de.jsxs(K4,{children:[de.jsx("label",{className:"label",children:"Result: "}),de.jsxs("output",{className:"ratio",children:[u[0]," : ",u[1]]}),de.jsxs("div",{className:"css",children:["aspect-ratio",de.jsx("span",{className:"grey",children:":"})," ",de.jsx("span",{className:"accent",children:u[0]})," ",de.jsx("span",{className:"grey",children:"/"})," ",de.jsx("span",{className:"accent",children:u[1]}),de.jsx("span",{className:"grey",children:";"})]})]})}const V4=Br.div`
+`;function Q4(){const e=nr(o=>o.ratio.width),n=nr(o=>o.ratio.height),t=nr(o=>o.ratio.loss),u=qy([e,n],t/100);return de.jsxs(K4,{children:[de.jsx("label",{className:"label",children:"Result: "}),de.jsxs("output",{className:"ratio",children:[u[0]," : ",u[1]]}),de.jsxs("div",{className:"css",children:["aspect-ratio",de.jsx("span",{className:"grey",children:":"})," ",de.jsx("span",{className:"accent",children:u[0]})," ",de.jsx("span",{className:"grey",children:"/"})," ",de.jsx("span",{className:"accent",children:u[1]}),de.jsx("span",{className:"grey",children:";"})]})]})}const V4=Br.div`
   width: 30rem;
   height: 30rem;
   position: relative;
@@ -127,7 +127,7 @@ function print() { __p += __j.call(arguments, '') }
 `,Y4=Br(Jy)`
   outline: 2px dashed var(--light-color);
   z-index: 0;
-`;function X4(){const e=nr(s=>s.ratio.width),n=nr(s=>s.ratio.height),t=nr(s=>s.ratio.loss),u=qy(e,n,t/100),o={};return u[0]>=u[1]?(o.left="0",o.right="0",o.transform="translateY(-50%)"):(o.top="0",o.bottom="0",o.height="100%",o.transform="translateX(-50%)"),de.jsxs(V4,{role:"img","aria-label":`A rectangle with width ${u[0]} and height ${u[1]}`,children:[" ",de.jsx(Jy,{style:{...o,aspectRatio:`${u[0]} / ${u[1]}`},"aria-hidden":"true"}),de.jsx(Y4,{style:{...o,aspectRatio:`${e} / ${n}`}})]})}const Z4=Br.div`
+`;function X4(){const e=nr(s=>s.ratio.width),n=nr(s=>s.ratio.height),t=nr(s=>s.ratio.loss),u=qy([e,n],t/100),o={};return u[0]>=u[1]?(o.left="0",o.right="0",o.transform="translateY(-50%)"):(o.top="0",o.bottom="0",o.height="100%",o.transform="translateX(-50%)"),de.jsxs(V4,{role:"img","aria-label":`A rectangle with width ${u[0]} and height ${u[1]}`,children:[" ",de.jsx(Jy,{style:{...o,aspectRatio:`${u[0]} / ${u[1]}`},"aria-hidden":"true"}),de.jsx(Y4,{style:{...o,aspectRatio:`${e} / ${n}`}})]})}const Z4=Br.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
