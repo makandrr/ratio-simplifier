@@ -1,5 +1,6 @@
-export function simplifyRatioWithLoss(width: number = 1, height: number = 1, loss: number = 0): [number, number] {
-  console.log(width, height, loss)
+import { Ratio } from "../types";
+
+export function simplifyRatioWithLoss([width = 1, height = 1]: Ratio, loss: number = 0): Ratio {
   if (loss < 0 || loss > 1) {
     throw new Error("Loss must be between 0 and 1");
   }

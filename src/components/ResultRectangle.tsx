@@ -38,7 +38,7 @@ function ResultRectangle() {
   const height = useSelector((state: RootState) => state.ratio.height);
   const loss = useSelector((state: RootState) => state.ratio.loss);
 
-  const simplifiedRatio = simplifyRatioWithLoss(width, height, loss / 100);
+  const simplifiedRatio = simplifyRatioWithLoss([width, height], loss / 100);
   const rectStyle: RectStyle = {};
   if (simplifiedRatio[0] >= simplifiedRatio[1]) {
     rectStyle.left = '0';
